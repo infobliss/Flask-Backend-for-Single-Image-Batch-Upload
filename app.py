@@ -11,7 +11,7 @@ def index():
     return render_template('login.html')
 
 
-@app.route('/result', methods=['GET', 'POST'])
+@app.route('/result', methods=['POST'])
 def receiveData():
     glam1 = request.form['glam_name']
     id = request.form['file_id']
