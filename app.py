@@ -15,23 +15,23 @@ def index():
 def receiveData():
     glam1 = request.form['glam_name']
     id = request.form['file_id']
-    glam_list = list_glams()
-    IsValidGLAM = 0
-    for glam in glam_list: 
-         if glam['name'] == glam1:
-		IsValidGLAM=1
-    		break
-    if IsValidGLAM == 0:
+    glam_list = list_glams
+    
+    try:
+	    for glam in glam_list: 
+        	 if glam['name'] == glam1:
+    			break
+    except:
 	 return "GLAM Not Found in our list"
+
+    #upload the image
+    howManyMatches = main(id)
+    print('passes main')
+    if howManyMatches == 0:
+	return 'No match found!'
     else:
-         #upload the image
-         howManyMatches = main(id)
-	 print('passes main')
-	 if howManyMatches == 0:
-		return 'No match found!'
-	 else:
-                returnString = 'Upload of ' + str(howManyMatches) + ' files successful. or File already exists'
-	        return returnString
+        returnString = 'operation successful'
+	return returnString
 
 @app.route('/glam', methods=['GET'])
 def showForm():
