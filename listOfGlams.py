@@ -1,5 +1,4 @@
-def list_glams():
-     return [{
+list_glams = [{
 	'name' : 'Nationaal Archief'
      },
      {
